@@ -91,8 +91,22 @@ public:
         delete[] data;
         data = tmp;
     }
-
-
+    
+    void remove(int index){
+        if (index>size) {
+            throw range_error("Index too large! Must insert within length.");
+        }
+        int *tmp = new int[capacity];
+        for (int i=0; i<index; i++) {
+            tmp[i] = data[i];
+        }
+        size -= 1;
+        for (int i=index; i<size+1; i++) {
+            tmp[i] = data[i+1];
+        }
+        delete[] data;
+        data = tmp;
+    }
 };
 
 bool is_prime(int n) {
@@ -114,7 +128,8 @@ int main() {
         }
         s++;
     }
-    primes.insert(0, 20);
+    primes.print();
+    primes.remove(3);
     primes.print();
     return 0;
 }
