@@ -75,6 +75,23 @@ public:
         cout << data[size-1] << "]" << endl;
     }
 
+    void insert(int val, int index) {
+        if (index>size) {
+            throw range_error("Index too large! Must insert within length.");
+        }
+        int *tmp = new int[capacity];
+        for (int i=0; i<index; i++) {
+            tmp[i] = data[i];
+        }
+        tmp[index] = val;
+        size += 1;
+        for (int i=index+1; i<size; i++) {
+            tmp[i] = data[i-1];
+        }
+        delete[] data;
+        data = tmp;
+    }
+
 
 };
 
@@ -97,6 +114,7 @@ int main() {
         }
         s++;
     }
+    primes.insert(0, 20);
     primes.print();
     return 0;
 }
