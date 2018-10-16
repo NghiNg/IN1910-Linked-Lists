@@ -31,6 +31,10 @@ public:
         delete[] data;
     }
 
+    int length() {
+        return size;
+    }
+
     void append(int n) {
         if (size < capacity) {
             data[size] = n;
@@ -71,14 +75,8 @@ public:
 };
 
 int main() {
-    ArrayList example({1,2,3,4,5});
-    example.append(23);
-    example.append(22);
-    example.append(24);
-    for (int i=0; i<example.size; i++) {
-        cout << example.get(i) << endl;
-    }
-    example.print();
-    cout << example[5] << endl;
+    ArrayList example({1, 2, 4});
+
+    cout << example.length() << endl;
     return 0;
 }
