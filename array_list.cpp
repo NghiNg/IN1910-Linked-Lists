@@ -57,7 +57,7 @@ public:
     }
 
     int& get(int i) {
-        if (0 <= i and i < size) {
+        if ((0 <= i) && (i < size)) {
             return data[i];
         }
     }
@@ -78,9 +78,9 @@ public:
 
 };
 
-bool is_prime(int n){
-    for(int i=2; i<n; i++){
-        if(n%i == 0){
+bool is_prime(int n) {
+    for(int i=2; i<n; i++) {
+        if(n%i == 0) {
             return false;
         }
     }
@@ -91,7 +91,7 @@ bool is_prime(int n){
 int main() {
     ArrayList primes;
     int s = 1;
-    while(primes.length()<10){
+    while(primes.length()<10) {
         if(is_prime(s)){
             primes.append(s);
         }
