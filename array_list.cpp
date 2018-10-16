@@ -107,6 +107,18 @@ public:
         delete[] data;
         data = tmp;
     }
+
+    int pop(int index){
+        int popped=data[index];
+        remove(index);
+        return popped;
+    }
+
+    int pop(){
+        int a = data[length()];
+        pop(length());
+        return a;
+    }
 };
 
 bool is_prime(int n) {
@@ -118,7 +130,6 @@ bool is_prime(int n) {
     return true;
 }
 
-
 int main() {
     ArrayList primes;
     int s = 1;
@@ -129,7 +140,7 @@ int main() {
         s++;
     }
     primes.print();
-    primes.remove(3);
+    cout << primes.pop() << endl;
     primes.print();
     return 0;
 }
