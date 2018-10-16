@@ -8,6 +8,16 @@ private:
     int *data;
     int capacity;
 
+    void resize() {
+        capacity *= 2;
+        int *tmp = new int[capacity];
+        for (int i=0; i<size; i++) {
+            tmp[i] = data[i];
+        }
+        delete[] data;
+        data = tmp;
+    }
+
 public:
     int size;
 
@@ -41,6 +51,8 @@ public:
             size += 1;
         } else {
             resize();
+            data[size] = n;
+            size += 1;
         }
     }
 
@@ -63,20 +75,12 @@ public:
         cout << data[size-1] << "]" << endl;
     }
 
-    void resize() {
-        capacity *= 2;
-        int *tmp = new int[capacity];
-        for (int i=0; i<size; i++) {
-            tmp[i] = data[i];
-        }
-        delete[] data;
-        data = tmp;
-    }
+
 };
 
 int main() {
-    ArrayList example({1, 2, 4});
-
+    ArrayList example({1, 2, 4, 5, 6, 7});
+    example.print();
     cout << example.length() << endl;
     return 0;
 }
