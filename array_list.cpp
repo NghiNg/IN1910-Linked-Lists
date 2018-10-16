@@ -91,7 +91,7 @@ bool is_prime(int n){
 int main() {
     ArrayList primes;
     int s = 1;
-    while(primes.length<10){
+    while(primes.length()<10){
         if(is_prime(s)){
             primes.append(s);
         }
