@@ -78,9 +78,25 @@ public:
 
 };
 
+bool is_prime(int n){
+    for(int i=2; i<n; i++){
+        if(n%i == 0){
+            return false;
+        }
+    }
+    return true;
+}
+
+
 int main() {
-    ArrayList example({1, 2, 4, 5, 6, 7});
-    example.print();
-    cout << example.length() << endl;
+    ArrayList primes;
+    int s = 1;
+    while(primes.length<10){
+        if(is_prime(s)){
+            primes.append(s);
+        }
+        s++;
+    }
+    primes.print();
     return 0;
 }
