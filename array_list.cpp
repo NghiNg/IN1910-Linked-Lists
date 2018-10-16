@@ -6,7 +6,7 @@ using namespace std;
 class ArrayList {
 private:
     int *data;
-    int capacity;
+
 
     void resize() {
         capacity *= 2;
@@ -18,8 +18,20 @@ private:
         data = tmp;
     }
 
+    void halve() {
+        capacity /= 2;
+        int *tmp = new int[capacity];
+        for (int i=0; i<size; i++) {
+            tmp[i] = data[i];
+        }
+        delete[] data;
+        data = tmp;
+    }
+
+
 public:
     int size;
+    int capacity;
 
     ArrayList() {
         size = 0;
@@ -91,7 +103,7 @@ public:
         delete[] data;
         data = tmp;
     }
-    
+
     void remove(int index){
         if (index>size) {
             throw range_error("Index too large! Must insert within length.");
@@ -106,6 +118,9 @@ public:
         }
         delete[] data;
         data = tmp;
+        if(4*size<capacity) {
+            shrink_to_fit();
+        }
     }
 
     int pop(int index){
@@ -117,7 +132,13 @@ public:
     int pop(){
         int a = data[length()];
         pop(length());
-        return a;
+        return a;   // Her er det en bug et sted som gjør at vi ikke returnerer det riktige tallet.
+    }
+
+    void shrink_to_fit() {
+        while(size*2<capacity) {
+            halve();
+        }
     }
 };
 
@@ -133,12 +154,19 @@ bool is_prime(int n) {
 int main() {
     ArrayList primes;
     int s = 1;
-    while(primes.length()<10) {
+    while(primes.length()<1000) {
         if(is_prime(s)){
             primes.append(s);
         }
         s++;
     }
+    cout << primes.capacity << endl;
+    
+    for(int i=10; i<1000; i++) {
+        primes.pop();
+    }
+    cout << primes.capacity << endl;
+
     primes.print();
     cout << primes.pop() << endl;
     primes.print();
