@@ -82,6 +82,19 @@ class LinkedList {
         int &operator[](int index) {
             return get_node(index)->value;
         }
+
+        void insert(int val, int index) {
+            Node* tmp;
+            Node* current;
+
+            tmp = get_node(index);
+            current = get_node(index-1);
+
+            current->next = new Node(val);
+            current = current->next;
+            current->next = tmp;
+            size += 1;
+        }
 };
 
 
@@ -91,10 +104,11 @@ int main() {
     test.append(5);
     test.print();
     test.append(82);
-    test.append(82);
     test.append(83);
-    test.append(84);
+    test.append(6);
+    test.append(9);
+    test.insert(84, 2);
     test.print();
-    
+
     return 0;
 }
