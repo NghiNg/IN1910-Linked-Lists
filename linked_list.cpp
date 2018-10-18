@@ -63,7 +63,7 @@ class LinkedList {
                 current = current->next;
             }
             current->next = new Node(val);
-            tail = new Node(val);       //Tail points to the appended.
+            tail = current->next;
             size += 1;
         }
 
