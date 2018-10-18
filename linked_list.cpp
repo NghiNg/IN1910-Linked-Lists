@@ -22,7 +22,7 @@ class LinkedList {
         int size;
 
         Node* get_node(int index) {
-            if (index<0 or index>=size) {
+            if (index<0 || index>=size) {
                 throw range_error("IndexError: Index out of range.");
             }
             Node* current = head;
@@ -95,6 +95,18 @@ class LinkedList {
             current->next = tmp;
             size += 1;
         }
+
+        void remove(int index) {
+            Node* before;
+            Node* after;
+            Node* current;
+            before = get_node(index-1);
+            after = get_node(index+1);
+            before->next = after;
+            current = get_node(index);
+            delete current;
+            size -= 1;
+        }
 };
 
 
@@ -108,6 +120,7 @@ int main() {
     test.append(6);
     test.append(9);
     test.insert(84, 2);
+    test.remove(3);
     test.print();
 
     return 0;
