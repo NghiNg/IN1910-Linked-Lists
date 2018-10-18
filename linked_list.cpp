@@ -23,7 +23,7 @@ class LinkedList {
         int size;
 
         Node* get_node(int index) {
-            if (index<0 || index>=size) {
+            if ((index<0) || (index>=size)) {
                 throw range_error("IndexError: Index out of range.");
             }
             Node* current = head;
@@ -111,6 +111,7 @@ class LinkedList {
             Node* before;
             Node* after;
             Node* current;
+            current = get_node(index);
             if (index == size-1) {
                 before = get_node(index-1);
                 before->next = nullptr;
@@ -118,10 +119,8 @@ class LinkedList {
                 head = get_node(1);
             } else {
                 before = get_node(index-1);
-                after = get_node(index+1);
-                before->next = after;
+                before->next = get_node(index+1);
             }
-            current = get_node(index);
             delete current;
             size -= 1;
         }
@@ -139,22 +138,19 @@ class LinkedList {
 };
 
 int main() {
-    LinkedList test({1,2,3,4,5,6,7,8,9});
-    test.append(5);
-    test.print();
-    test.append(82);
-    test.append(83);
+    LinkedList test({1,2,3,4,5});
+    cout << "Testing append, the next 5 integers." << endl;
     test.append(6);
+    test.append(7);
+    test.append(8);
     test.append(9);
+    test.append(10);
     test.print();
-    test.insert(84, 2);
+    cout << "Pop first index: " << test.pop(0) << endl;
     test.print();
-    cout << test.length() << endl;
-    cout << test.pop(0) << endl;
+    test.remove(4);
+    cout << "Removed index 4." << endl;
     test.print();
-    cout << test.pop(5) << endl;
-    test.print();
-    cout << test.pop() << endl;
-    test.print();
+    
     return 0;
 }
