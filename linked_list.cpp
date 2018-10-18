@@ -20,6 +20,18 @@ class LinkedList {
     private:
         Node* head;
         int size;
+
+        Node* get_node(int index) {
+            if (index < or index >= size) {
+                throw range_error("IndexError: Index out of range.");
+            }
+            Node* current = head;
+            for (int i=0; i<index; i++) {
+                current = current->next;
+            }
+            return current;
+        }
+
     public:
         LinkedList() {
             head = nullptr;
@@ -65,6 +77,10 @@ class LinkedList {
 
         int length() {
             return size;
+        }
+
+        int & operator[](int index) {
+            return get_node(index)->value;
         }
 }
 
