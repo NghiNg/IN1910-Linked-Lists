@@ -7,7 +7,6 @@ class ArrayList {
 private:
     int *data;
 
-
     void resize() {
         capacity *= 2;
         int *tmp = new int[capacity];
@@ -106,7 +105,7 @@ public:
 
     void remove(int index){
         if (index>size) {
-            throw range_error("Index too large! Must insert within length.");
+            throw range_error("IndexError: Index too large! Must insert within length.");
         }
         int *tmp = new int[capacity];
         for (int i=0; i<index; i++) {
@@ -130,9 +129,9 @@ public:
     }
 
     int pop(){
-        int a = data[length()];
-        pop(length());
-        return a;   // Her er det en bug et sted som gjør at vi ikke returnerer det riktige tallet.
+        int a = data[size-1];
+        pop(size);
+        return a;
     }
 
     void shrink_to_fit() {
@@ -160,15 +159,19 @@ int main() {
         }
         s++;
     }
-    cout << primes.capacity << endl;
+    cout << "Capacity = " << primes.capacity << endl;        //Testing the capacity.
     
-    for(int i=10; i<1000; i++) {
+    for(int i=11; i<1000; i++) {
         primes.pop();
     }
-    cout << primes.capacity << endl;
+    cout << "Capacity = " << primes.capacity << endl;        //Testing if capacity works after changing the list.
 
     primes.print();
-    cout << primes.pop() << endl;
+    
+    cout << "Length = " << primes.length() << endl;
+    cout << "Pop = " << primes.pop() << endl;           //Testing if pop() works.
+    
     primes.print();
+    cout << "Length = " << primes.length() << endl;
     return 0;
 }
