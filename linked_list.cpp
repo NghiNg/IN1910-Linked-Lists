@@ -19,10 +19,12 @@ Node(int n, Node* p) {
 class LinkedList {
     private:
         Node* head;
+        Node* tail;
         int size;
     public:
         LinkedList() {
             head = nullptr;
+            tail = nullptr;
             size = 0
         };
 
@@ -49,6 +51,7 @@ class LinkedList {
                 current = current->next;
             }
             current->next = new Node(val);
+            tail = new Node(val);       //Tail points to the appended.
             size += 1;
         }
 
