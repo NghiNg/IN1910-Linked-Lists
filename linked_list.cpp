@@ -22,7 +22,7 @@ class LinkedList {
         int size;
 
         Node* get_node(int index) {
-            if (index<0 || index>size) {
+            if (index<0 or index>=size) {
                 throw range_error("IndexError: Index out of range.");
             }
             Node* current = head;
@@ -116,7 +116,7 @@ class LinkedList {
             return tmp->value;
         }
 
-        int pop(){
+        int pop() {
             return pop(size);
         }
 };
@@ -132,8 +132,8 @@ int main() {
     test.append(6);
     test.append(9);
     test.insert(84, 2);
-    cout << test.pop() << endl;
     test.print();
-
+    test.pop(45);
+    cout << test[2] << endl;
     return 0;
 }
