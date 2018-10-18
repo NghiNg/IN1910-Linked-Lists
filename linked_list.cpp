@@ -22,7 +22,7 @@ class LinkedList {
         int size;
 
         Node* get_node(int index) {
-            if (index<0 || index>=size) {
+            if (index<0 || index>size) {
                 throw range_error("IndexError: Index out of range.");
             }
             Node* current = head;
