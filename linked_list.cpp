@@ -4,18 +4,17 @@ using namespace std;
 struct Node {
     int value;
     Node* next;
+
+    Node(int n) {
+        value = n;
+        next = nullptr;
+    }
+
+    Node(int n, Node* p) {
+        value = n;
+        next = p;
+    }
 };
-
-Node(int n) {
-    value = n;
-    next = nullptr;
-}
-
-Node(int n, Node* p) {
-    value = n;
-    next = p;
-}
-
 class LinkedList {
     private:
         Node* head;
@@ -23,7 +22,7 @@ class LinkedList {
         int size;
 
         Node* get_node(int index) {
-            if (index < or index >= size) {
+            if (index<0 or index>=size) {
                 throw range_error("IndexError: Index out of range.");
             }
             Node* current = head;
@@ -37,8 +36,8 @@ class LinkedList {
         LinkedList() {
             head = nullptr;
             tail = nullptr;
-            size = 0
-        };
+            size = 0;
+        }
 
         ~LinkedList() {
             Node* current;
@@ -55,15 +54,13 @@ class LinkedList {
         void append(int val) {
             if(head==nullptr) {
                 head = new Node(val);
+                tail = head;
                 return;
             }
             Node* current;
-            current = head;
-            while(current->next != nullptr) {
-                current = current->next;
-            }
+            current = tail;
             current->next = new Node(val);
-            tail = new Node(val);       //Tail points to the appended.
+            tail = current->next;
             size += 1;
         }
 
@@ -82,15 +79,22 @@ class LinkedList {
             return size;
         }
 
-        int & operator[](int index) {
+        int &operator[](int index) {
             return get_node(index)->value;
         }
-}
+};
 
 
 
 int main() {
-
-
-    return 0
+    LinkedList test;
+    test.append(5);
+    test.print();
+    test.append(82);
+    test.append(82);
+    test.append(83);
+    test.append(84);
+    test.print();
+    
+    return 0;
 }
