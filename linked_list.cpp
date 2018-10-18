@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 struct Node {
@@ -37,6 +38,15 @@ class LinkedList {
             head = nullptr;
             tail = nullptr;
             size = 0;
+        }
+
+        LinkedList(vector<int> initial) {
+            head = nullptr;
+            tail = nullptr;
+            size = 0;
+            for (int e: initial) {
+                append(e);
+            }
         }
 
         ~LinkedList() {
@@ -129,17 +139,22 @@ class LinkedList {
 };
 
 int main() {
-    LinkedList test;
+    LinkedList test({1,2,3,4,5,6,7,8,9});
     test.append(5);
     test.print();
     test.append(82);
     test.append(83);
     test.append(6);
     test.append(9);
+    test.print();
     test.insert(84, 2);
     test.print();
     cout << test.length() << endl;
     cout << test.pop(0) << endl;
+    test.print();
+    cout << test.pop(5) << endl;
+    test.print();
+    cout << test.pop() << endl;
     test.print();
     return 0;
 }
