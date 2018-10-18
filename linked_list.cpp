@@ -107,6 +107,18 @@ class LinkedList {
             delete current;
             size -= 1;
         }
+
+        int pop(int index) {
+            Node* tmp;
+            tmp = get_node(index);
+            remove(index);
+            size -= 1;
+            return tmp->value;
+        }
+
+        int pop(){
+            return pop(size);
+        }
 };
 
 
@@ -120,7 +132,7 @@ int main() {
     test.append(6);
     test.append(9);
     test.insert(84, 2);
-    test.remove(3);
+    cout << test.pop() << endl;
     test.print();
 
     return 0;
