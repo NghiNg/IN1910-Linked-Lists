@@ -62,6 +62,7 @@ class LinkedList {
         }
 
         void append(int val) {
+            //Adds int to end of list.
             if(head==nullptr) {
                 head = new Node(val);
                 tail = head;
@@ -95,6 +96,7 @@ class LinkedList {
         }
 
         void insert(int val, int index) {
+            //Adds a node at set index.
             Node* tmp;
             Node* current;
 
@@ -108,8 +110,8 @@ class LinkedList {
         }
 
         void remove(int index) {
+            //Removes a node at a set index.
             Node* before;
-            Node* after;
             Node* current;
             current = get_node(index);
             if (index == size-1) {
@@ -126,6 +128,7 @@ class LinkedList {
         }
 
         int pop(int index) {
+            //Removes a node at an index and returns that nodes value.
             Node* tmp;
             tmp = get_node(index);
             int removed = tmp->value;
@@ -134,6 +137,7 @@ class LinkedList {
         }
 
         int pop() {
+            //Same as pop but only last node.
             return pop(size-1);
         }
 };
