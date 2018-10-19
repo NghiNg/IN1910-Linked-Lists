@@ -1,8 +1,10 @@
 # project2_bdnguye_sigursor
 Besvarelse på gruppeprosjekt 2 i IN1910.
 
-Opg 3 - Store O "kalkulasjon".
+**Oppg. 3 - Store O "kalkulasjon".**
+
 Vi gjør en enkel stor O- beregning av algoritmene våre for diverse funksjonaliteter.
+
 ArrayList = AL    LinkedList = LL
 k er en konstant og n er listelengden.
 
