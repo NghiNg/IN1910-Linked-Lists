@@ -57,6 +57,7 @@ public:
     }
 
     void append(int n) {
+        //Adds int to end of list.
         if (size < capacity) {
             data[size] = n;
             size += 1;
@@ -87,6 +88,7 @@ public:
     }
 
     void insert(int val, int index) {
+        //Adds int to index in list.
         if (index>size) {
             throw range_error("Index too large! Must insert within length.");
         }
@@ -104,6 +106,7 @@ public:
     }
 
     void remove(int index){
+        //Removes int and index in list.
         if (index>size) {
             throw range_error("IndexError: Index too large! Must insert within length.");
         }
@@ -123,12 +126,14 @@ public:
     }
 
     int pop(int index){
+        //Removes and returns the removeds value.
         int popped=data[index];
         remove(index);
         return popped;
     }
 
     int pop(){
+        //Removes last and returns its value.
         int a = data[size-1];
         pop(size);
         return a;
@@ -142,6 +147,7 @@ public:
 };
 
 bool is_prime(int n) {
+    //WE MAKING PRIMES!!!!
     for(int i=2; i<n; i++) {
         if(n%i == 0) {
             return false;
