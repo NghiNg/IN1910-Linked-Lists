@@ -128,8 +128,9 @@ class LinkedList {
         int pop(int index) {
             Node* tmp;
             tmp = get_node(index);
+            int removed = tmp->value;
             remove(index);
-            return tmp->value;
+            return removed;
         }
 
         int pop() {
