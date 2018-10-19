@@ -1,9 +1,10 @@
 # project2_bdnguye_sigursor
-Besvarelse på gruppeprosjekt 2 i IN1910
+Besvarelse på gruppeprosjekt 2 i IN1910.
 
 Opg 3 - Store O "kalkulasjon".
 Vi gjør en enkel stor O- beregning av algoritmene våre for diverse funksjonaliteter.
 ArrayList = AL    LinkedList = LL
+k er en konstant og n er listelengden.
 
 
     - get_element.
@@ -11,7 +12,7 @@ ArrayList = AL    LinkedList = LL
                 Dette er uavhengig av lengden på lista.
                 O(n) = k
 
-        LL:     Vi må itterer oss fram til et element.
+        LL:     Vi må iterere oss frem til et element.
                 Dette er avhengig av hvor lang lista vår er.
                 O(n) = n
 
@@ -77,6 +78,6 @@ ArrayList = AL    LinkedList = LL
                 Dette er bare avhengig av listelengden.
                 O(n) = n
 
-        LL:     Vi itterer gjennom hele lenken og gjør et fast anntall operasjoner
+        LL:     Vi itererer gjennom hele lenken og gjør et fast anntall operasjoner
                 per node. Dette skalerer kun lineært med listelengden.
                 O(n) = n
