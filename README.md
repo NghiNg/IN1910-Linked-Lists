@@ -4,6 +4,8 @@ Besvarelse på gruppeprosjekt 2 i IN1910
 Opg 3 - Store O "kalkulasjon".
 Vi gjør en enkel stor O- beregning av algoritmene våre for diverse funksjonaliteter.
 ArrayList = AL    LinkedList = LL
+
+
     - get_element.
         AL:     Alt vi trenger å gjøre er å lese av et element i en liste.
                 Dette er uavhengig av lengden på lista.
@@ -78,4 +80,3 @@ ArrayList = AL    LinkedList = LL
         LL:     Vi itterer gjennom hele lenken og gjør et fast anntall operasjoner
                 per node. Dette skalerer kun lineært med listelengden.
                 O(n) = n
-                
