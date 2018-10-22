@@ -76,22 +76,22 @@ class CircLinkedList {
             return get_node(index)->value;
         }
 
-    void print() {
-        Node* current = head;
-        cout << "[";
-        int counter = 0;
-        while(counter != size) {
-            cout << current->value;
-            cout << ", ";
-            current = current->next;
-            counter++;
+        void print() {
+            Node* current = head;
+            cout << "[";
+            int counter = 0;
+            while(counter != size-1) {
+                cout << current->value;
+                cout << ", ";
+                current = current->next;
+                counter++;
+            }
+            cout << current->value << "]" << endl;
         }
-        cout << current->value << "]" << endl;
-    }
 };
 
 int main() {
-    CircLinkedList test();
+    CircLinkedList test;
     test.append(1);
     test.append(2);
     test.append(3);
