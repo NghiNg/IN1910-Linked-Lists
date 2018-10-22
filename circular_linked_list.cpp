@@ -120,7 +120,7 @@ class CircLinkedList {
                 before->next = nullptr;
             } else if (index == 0) {
                 head = get_node(1);
-                cout << get_node(0)->value << endl;
+                cout << get_node(0)->value << endl;         //I think the issue might be that it's get_node(1) and not 0, but it bugs.
             } else {
                 before = get_node(index-1);
                 before->next = get_node(index+1);
