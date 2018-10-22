@@ -41,6 +41,15 @@ class CircLinkedList {
             size = 0;
         }
 
+        CircLinkedList(int range) {
+            head = nullptr;
+            tail = nullptr;
+            size = 0;
+            for(int i=1; i<=range; i++) {
+                append(i);
+            }
+        }
+
 
         ~CircLinkedList() {
             Node* current;
@@ -88,17 +97,47 @@ class CircLinkedList {
             }
             cout << current->value << "]" << endl;
         }
+
+        void remove(int index) {
+            //Removes a node at a set index.
+            Node* before;
+            Node* current;
+            current = get_node(index);
+            if (index == size-1) {
+                before = get_node(index-1);
+                before->next = nullptr;
+            } else if (index == 0) {
+                head = get_node(1);
+            } else {
+                before = get_node(index-1);
+                before->next = get_node(index+1);
+            }
+            delete current;
+            size -= 1;
+        }
+
+        int pop(int index) {
+            //Removes a node at an index and returns that nodes value.
+            Node* tmp;
+            tmp = get_node(index);
+            int removed = tmp->value;
+            remove(index);
+            return removed;
+        }
+
+        vector<int> josephus_sequence(int k) {
+            vector<int> jos_seq = [];
+            while(size>0) {
+                jos_seq.pushback(pop(k));
+            }
+            return jos_seq;
+        }
 };
 
 int main() {
-    CircLinkedList test;
-    test.append(1);
-    test.append(2);
-    test.append(3);
-    test.append(4);
-    test.append(5);
+    CircLinkedList test(4);
 
-    test.print();
+    cout << test.josephus_sequence(1) << endl;
 
 
     return 0;
