@@ -144,7 +144,9 @@ class LinkedList {
 
 int main() {
     LinkedList test({1,2,3,4,5});
-    cout << "Testing append, the next 5 integers." << endl;
+    cout << "This is the initial list." << endl;
+    test.print();
+    cout << "Testing append, 4 integers." << endl;
     test.append(6);
     test.append(7);
     test.append(8);
