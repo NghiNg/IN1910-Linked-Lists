@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdexcept>
 #include <vector>
 using namespace std;
 
@@ -24,7 +25,7 @@ class LinkedList {
 
         Node* get_node(int index) {
             if ((index<0) || (index>=size)) {
-                throw range_error("IndexError: Index out of range.");
+                throw out_of_range("IndexError: Index out of range.");
             }
             Node* current = head;
             for (int i=0; i<index; i++) {
@@ -169,3 +170,4 @@ int main() {
     cout << "Pop last index: " << test.pop() << endl;
     test.print();
     return 0;
+}

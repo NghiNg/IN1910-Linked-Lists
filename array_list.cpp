@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <stdexcept>
 #include <vector>
 using namespace std;
 
@@ -90,7 +91,7 @@ public:
     void insert(int val, int index) {
         //Adds int to index in list.
         if (index>size) {
-            throw range_error("Index too large! Must insert within length.");
+            throw out_of_range("Index too large! Must insert within length.");
         }
         int *tmp = new int[capacity];
         for (int i=0; i<index; i++) {
@@ -108,7 +109,7 @@ public:
     void remove(int index){
         //Removes int and index in list.
         if (index>size) {
-            throw range_error("IndexError: Index too large! Must insert within length.");
+            throw out_of_range("IndexError: Index too large! Must insert within length.");
         }
         int *tmp = new int[capacity];
         for (int i=0; i<index; i++) {

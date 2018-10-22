@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdexcept>
 #include <vector>
 using namespace std;
 
@@ -25,7 +26,7 @@ class CircLinkedList {
 
         Node* get_node(int index) {
             if(head == nullptr) {
-                throw range_error("Size Error: List is empty!");
+                throw out_of_range("Size Error: List is empty!");
             }
             Node* current = head;
             for (int i=0; i<index; i++) {
