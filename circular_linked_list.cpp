@@ -126,9 +126,10 @@ class CircLinkedList {
         }
 
         vector<int> josephus_sequence(int k) {
-            vector<int> jos_seq = [];
+            vector<int> jos_seq;
             while(size>0) {
-                jos_seq.pushback(pop(k));
+                int blabla = pop(k);
+                jos_seq.push_back(blabla);
             }
             return jos_seq;
         }
@@ -137,8 +138,8 @@ class CircLinkedList {
 int main() {
     CircLinkedList test(4);
 
-    cout << test.josephus_sequence(1) << endl;
-
+    test.josephus_sequence(1);
+    cout << "coolios" << endl;
 
     return 0;
 }
