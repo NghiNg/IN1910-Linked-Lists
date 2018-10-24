@@ -100,6 +100,7 @@ class CircLinkedList {
         }
 
         void move_head(int index) {
+            tail = get_node(index-1);
             head = get_node(index);
         }
 
@@ -122,23 +123,30 @@ class CircLinkedList {
             Node* current;
             current = get_node(index);
             if (size == 1) {
-                cout << "head" << head->value << endl;
+                //cout << "checkpoint size == 1" << endl;
+
                 head = nullptr;
                 delete current;
                 size -= 1;
                 return;
             }
             if (index == size-1) {
+                //cout << "checkpoint index == size-1" << endl;
+
                 before = get_node(index-1);
                 before->next = nullptr;
-            } else if (index == 0) {
-                head = get_node(1);
-                cout << get_node(0)->value << endl;         //I think the issue might be that it's get_node(1) and not 0, but it bugs.
+            } else if (index%size == 0) {
+                //cout << "checkpoint index == 0" << endl;
+                head = get_node(index+1);
             } else {
+                //cout << "checkpoint else" << endl;
                 before = get_node(index-1);
                 before->next = get_node(index+1);
             }
+
             delete current;
+            cout << "print after deletion of current node" << endl;
+            print();
             size -= 1;
         }
 
@@ -166,7 +174,7 @@ class CircLinkedList {
                 int dead_man = pop(k);
                 cout << "test-joseq-while  dead_man: " << dead_man << " size: " << size << endl;
                 move_head(k);
-
+                cout << "head value " << head->value << endl;
                 jos_seq.push_back(dead_man);
 
             }
@@ -189,13 +197,12 @@ int last_man_standing(int n, int k) {
 
 
 int main() {
-    CircLinkedList test(20);
+    CircLinkedList test({0, 1});
+    test.pop(2);
     test.print();
-    cout << test.length() << endl;
-    CircLinkedList seq(test.josephus_sequence(1));
-    seq.print();
-    cout << last_man_standing(20, 2) << endl;
-    //cout << test.josephus_sequence(1)[1] << endl;
-    //cout << 5 << endl;
+    //cout << "list after popped element 0: " << endl;
+    //test.print();
+
+    cout << "test end" << endl;
     return 0;
 }
