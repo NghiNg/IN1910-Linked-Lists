@@ -28,6 +28,9 @@ class CircLinkedList {
             if(head == nullptr) {
                 throw out_of_range("Size Error: List is empty!");
             }
+            if(index<0) {
+                throw out_of_range("need positive index");
+            }
             Node* current = head;
             for (int i=0; i<index; i++) {
                 current = current->next;
@@ -123,25 +126,25 @@ class CircLinkedList {
             Node* current;
             current = get_node(index);
             if (size == 1) {
-                cout << "checkpoint size == 1" << endl;
+                //cout << "checkpoint size == 1" << endl;
                 head = nullptr;
                 delete current;
                 size -= 1;
                 return;
             }
             if (index == size-1) {
-                cout << "checkpoint index == size-1" << endl;
+                //cout << "checkpoint index == size-1" << endl;
 
                 before = get_node(index-1);
                 before->next = head;
                 tail = before;
             } else if (index%size == 0) {
-                cout << "checkpoint index-mod-size == 0" << endl;
+                //cout << "checkpoint index-mod-size == 0" << endl;
                 before = get_node(index-1);
                 before->next = get_node(index+1);
                 head = before->next;
             } else {
-                cout << "checkpoint else" << endl;
+                //cout << "checkpoint else" << endl;
                 before = get_node(index-1);
                 before->next = get_node(index+1);
             }
@@ -173,8 +176,12 @@ class CircLinkedList {
             while (size != 0) {
                 //cout << "while size: " << size << endl;
                 int dead_man = pop(k);
-                move_head(k);
-                cout << "new head value: " << head->value << endl;
+                //cout << "checkpoint after pop(k)" << endl;
+                if(size != 0) {
+                    move_head(k);
+                    //cout << "checkpoint after move_head" << endl;
+
+                }
                 jos_seq.push_back(dead_man);
             }
             return jos_seq;
@@ -187,8 +194,11 @@ int last_man_standing(int n, int k) {
     // Vi kommer tilbake og retter dem senere.
     CircLinkedList army(n);
     vector<int> seq = army.josephus_sequence(k);
+    //cout << seq[0] << endl;
     CircLinkedList dead(seq);
-    dead.print();
+    //cout << "checkpoint before print" << endl;
+    //dead.print();
+    //cout << "checkpoint after print" << endl;
     return dead.pop();
 }
 
@@ -196,7 +206,7 @@ int last_man_standing(int n, int k) {
 int main() {
     //CircLinkedList test({0,1,3,4});
     //cout << test.pop(4) << endl;
-    cout << last_man_standing(4, 4) << endl;
+    cout << last_man_standing(10, 1) << endl;
 
     cout << "test end" << endl;
     return 0;
