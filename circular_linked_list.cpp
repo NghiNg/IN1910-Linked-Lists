@@ -123,30 +123,30 @@ class CircLinkedList {
             Node* current;
             current = get_node(index);
             if (size == 1) {
-                //cout << "checkpoint size == 1" << endl;
-
+                cout << "checkpoint size == 1" << endl;
                 head = nullptr;
                 delete current;
                 size -= 1;
                 return;
             }
             if (index == size-1) {
-                //cout << "checkpoint index == size-1" << endl;
+                cout << "checkpoint index == size-1" << endl;
 
                 before = get_node(index-1);
-                before->next = nullptr;
+                before->next = head;
+                tail = before;
             } else if (index%size == 0) {
-                //cout << "checkpoint index == 0" << endl;
-                head = get_node(index+1);
+                cout << "checkpoint index-mod-size == 0" << endl;
+                before = get_node(index-1);
+                before->next = get_node(index+1);
+                head = before->next;
             } else {
-                //cout << "checkpoint else" << endl;
+                cout << "checkpoint else" << endl;
                 before = get_node(index-1);
                 before->next = get_node(index+1);
             }
 
             delete current;
-            cout << "print after deletion of current node" << endl;
-            print();
             size -= 1;
         }
 
@@ -171,15 +171,11 @@ class CircLinkedList {
             vector<int> jos_seq; // Vi lager først en vektor vi skal putte de døde inn i
 
             while (size != 0) {
+                //cout << "while size: " << size << endl;
                 int dead_man = pop(k);
-                cout << "test-joseq-while  dead_man: " << dead_man << " size: " << size << endl;
                 move_head(k);
-                cout << "head value " << head->value << endl;
+                cout << "new head value: " << head->value << endl;
                 jos_seq.push_back(dead_man);
-
-            }
-            if (size == 0) {
-                return jos_seq;
             }
             return jos_seq;
         }
@@ -192,16 +188,15 @@ int last_man_standing(int n, int k) {
     CircLinkedList army(n);
     vector<int> seq = army.josephus_sequence(k);
     CircLinkedList dead(seq);
+    dead.print();
     return dead.pop();
 }
 
 
 int main() {
-    CircLinkedList test({0, 1});
-    test.pop(2);
-    test.print();
-    //cout << "list after popped element 0: " << endl;
-    //test.print();
+    //CircLinkedList test({0,1,3,4});
+    //cout << test.pop(4) << endl;
+    cout << last_man_standing(4, 4) << endl;
 
     cout << "test end" << endl;
     return 0;
