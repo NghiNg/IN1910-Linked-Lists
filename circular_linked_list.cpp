@@ -51,6 +51,15 @@ class CircLinkedList {
             }
         }
 
+        CircLinkedList(vector<int> initial) {
+            head = nullptr;
+            tail = nullptr;
+            size = 0;
+            for (int e: initial) {
+                append(e);
+            }
+        }
+
 
         ~CircLinkedList() {
             Node* current;
@@ -88,6 +97,10 @@ class CircLinkedList {
 
         int length() {
            return size;
+        }
+
+        void move_head(int index) {
+            head = get_node(index);
         }
 
         void print() {
@@ -138,15 +151,24 @@ class CircLinkedList {
             return removed;
         }
 
+        int pop() {
+            //Same as pop but only last node.
+            return pop(size-1);
+        }
+
         vector<int> josephus_sequence(int k) {
-            vector<int> jos_seq;
-            cout << "test 1" << endl;
+            // Vi vil fjerne hvert k-te element. dvs dersom k=1, hopper vi over
+            // ett element og fjerner det neste.
+
+            vector<int> jos_seq; // Vi lager først en vektor vi skal putte de døde inn i
+
             while (size != 0) {
-                cout << "test 2" << endl;
                 int dead_man = pop(k);
-                cout << dead_man << endl;
+                cout << "test-joseq-while  dead_man: " << dead_man << " size: " << size << endl;
+                move_head(k);
+
                 jos_seq.push_back(dead_man);
-                cout << "test 3" << endl;
+
             }
             if (size == 0) {
                 return jos_seq;
@@ -155,13 +177,25 @@ class CircLinkedList {
         }
 };
 
+
+int last_man_standing(int n, int k) {
+    // Vi antar her at alle tidligere funksjoner fungerer feilfritt.
+    // Vi kommer tilbake og retter dem senere.
+    CircLinkedList army(n);
+    vector<int> seq = army.josephus_sequence(k);
+    CircLinkedList dead(seq);
+    return dead.pop();
+}
+
+
 int main() {
-    CircLinkedList test(2);
-    test.pop(1);
+    CircLinkedList test(20);
     test.print();
-    test.pop(2);
     cout << test.length() << endl;
+    CircLinkedList seq(test.josephus_sequence(1));
+    seq.print();
+    cout << last_man_standing(20, 2) << endl;
     //cout << test.josephus_sequence(1)[1] << endl;
-    cout << 5 << endl;
+    //cout << 5 << endl;
     return 0;
 }
