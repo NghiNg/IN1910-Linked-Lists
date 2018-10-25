@@ -3,7 +3,7 @@
 Besvarelse på gruppeprosjekt 2 i IN1910.
 
 For å kompilere og kjøre:
-* bdnguye: 
+* bdnguye:  
         - Kompilere: cl filename.cpp  
         - Kjøre: filename
 * sigursor:  
