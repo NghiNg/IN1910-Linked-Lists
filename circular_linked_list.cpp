@@ -106,8 +106,15 @@ class CircLinkedList {
         }
 
         void move_head(int index) {
+            //This is so the re-counting continues from where it was,
+            //instead of the beginning of the list.
+            if (index == 0) {
+                head = get_node(index);
+                tail = get_node(index);
+            } else {
             tail = get_node(index-1);
             head = get_node(index);
+            }
         }
 
         void print() {
@@ -133,8 +140,7 @@ class CircLinkedList {
                 delete current;
                 size -= 1;
                 return;
-            }
-            if (index == size-1) {
+            } else if (index == size-1) {
                 before = get_node(index-1);
                 before->next = head;
                 tail = before;
@@ -159,7 +165,6 @@ class CircLinkedList {
             tmp = get_node(index);
             int removed = tmp->value;
             remove(index);
-            cout << removed << endl;
             return removed;
         }
 
@@ -169,8 +174,7 @@ class CircLinkedList {
         }
 
         vector<int> josephus_sequence(int k) {
-            // Vi vil fjerne hvert k-te element. dvs dersom k=1, hopper vi over
-            // ett element og fjerner det neste.
+            //Removes every k'th element, so if k=1 it just kills everyone from start in order.
 
             vector<int> jos_seq;
             // Vi lager først en vektor vi skal putte de døde inn i
@@ -199,8 +203,17 @@ int main() {
     test.print();
     cout << test.pop(0) << endl;
     test.print();
-    //cout << last_man_standing(4,1) << endl;
-
+    cout << test.pop(0) << endl;
+    test.print();
+    cout << test.pop(0) << endl;
+    test.print();
+    //cout << test.pop(0) << endl;
+    test.print();
+    
+    
+    cout << last_man_standing(4,1) << endl;
+    //Everything runs smoothly except for pop(0) when length = 1 and
+    //last_man_standing(n,1) won't work for any n, most likely due to the same issue.
     cout << "test end" << endl;
     return 0;
 }
