@@ -1,6 +1,5 @@
 # project2_bdnguye_sigursor
-**https://github.uio.no/IN1910/project2_bdnguye_sigursor**
-
+**https://github.uio.no/IN1910/project2_bdnguye_sigursor**  
 Besvarelse på gruppeprosjekt 2 i IN1910.
 
 4.g - Pop quiz: I Josephus problem, for 68 menn og for hvert 7de mann drept, vil mann nr 68 være den siste som står igjen.
