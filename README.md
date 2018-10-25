@@ -7,8 +7,8 @@ For å kompilere og kjøre:
         - Kompilere: cl filename.cpp  
         - Kjøre: filename
 * sigursor:  
-        - Kompilere:  
-        - Kjøre:
+        - Kompilere: g++ filename.cpp -o outputfile.exe  
+        - Kjøre: outputfile.exe  
 * ifi-comp:  
 	- Kompilere: g++ -std=c++11 filename.cpp -o filename  
 	- Kjøre: ./filename
