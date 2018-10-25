@@ -159,6 +159,7 @@ class CircLinkedList {
             tmp = get_node(index);
             int removed = tmp->value;
             remove(index);
+            cout << removed << endl;
             return removed;
         }
 
@@ -175,10 +176,10 @@ class CircLinkedList {
 
             while (size != 0) {
                 //cout << "while size: " << size << endl;
-                int dead_man = pop(k);
+                int dead_man = pop(k-1);
                 //cout << "checkpoint after pop(k)" << endl;
                 if(size != 0) {
-                    move_head(k);
+                    move_head(k-1);
                     //cout << "checkpoint after move_head" << endl;
 
                 }
@@ -206,7 +207,7 @@ int last_man_standing(int n, int k) {
 int main() {
     //CircLinkedList test({0,1,3,4});
     //cout << test.pop(4) << endl;
-    cout << last_man_standing(10, 1) << endl;
+    cout << last_man_standing(68,7) << endl;
 
     cout << "test end" << endl;
     return 0;
