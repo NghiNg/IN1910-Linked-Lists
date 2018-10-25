@@ -172,16 +172,12 @@ class CircLinkedList {
             // Vi vil fjerne hvert k-te element. dvs dersom k=1, hopper vi over
             // ett element og fjerner det neste.
 
-            vector<int> jos_seq; // Vi lager først en vektor vi skal putte de døde inn i
-
+            vector<int> jos_seq;
+            // Vi lager først en vektor vi skal putte de døde inn i
             while (size != 0) {
-                //cout << "while size: " << size << endl;
                 int dead_man = pop(k-1);
-                //cout << "checkpoint after pop(k)" << endl;
                 if(size != 0) {
                     move_head(k-1);
-                    //cout << "checkpoint after move_head" << endl;
-
                 }
                 jos_seq.push_back(dead_man);
             }
@@ -191,15 +187,9 @@ class CircLinkedList {
 
 
 int last_man_standing(int n, int k) {
-    // Vi antar her at alle tidligere funksjoner fungerer feilfritt.
-    // Vi kommer tilbake og retter dem senere.
     CircLinkedList army(n);
     vector<int> seq = army.josephus_sequence(k);
-    //cout << seq[0] << endl;
     CircLinkedList dead(seq);
-    //cout << "checkpoint before print" << endl;
-    //dead.print();
-    //cout << "checkpoint after print" << endl;
     return dead.pop();
 }
 
@@ -207,7 +197,7 @@ int last_man_standing(int n, int k) {
 int main() {
     //CircLinkedList test({0,1,3,4});
     //cout << test.pop(4) << endl;
-    cout << last_man_standing(68,7) << endl;
+    cout << last_man_standing(68,1) << endl;
 
     cout << "test end" << endl;
     return 0;
