@@ -3,11 +3,11 @@
 Besvarelse på gruppeprosjekt 2 i IN1910.
 
 For å kompilere og kjøre:
-* bdnguye:
-        - Kompilere: cl filename.cpp
+* bdnguye: 
+        - Kompilere: cl filename.cpp  
         - Kjøre: filename
-* sigursor:
-        - Kompilere:
+* sigursor:  
+        - Kompilere:  
         - Kjøre:
 
 4.g - Pop quiz: I Josephus problem, for 68 menn og for hvert 7de mann drept, vil mann nr 68 være den siste som står igjen.
