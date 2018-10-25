@@ -9,6 +9,9 @@ For å kompilere og kjøre:
 * sigursor:  
         - Kompilere:  
         - Kjøre:
+* ifi-comp:  
+	- Kompilere: g++ -std=c++11 filename.cpp -o filename  
+	- Kjøre: ./filename
 
 4.g - Pop quiz: I Josephus problem, for 68 menn og for hvert 7de mann drept, vil mann nr 68 være den siste som står igjen.
 
