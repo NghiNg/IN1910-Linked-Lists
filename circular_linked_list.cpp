@@ -32,6 +32,9 @@ class CircLinkedList {
                 throw out_of_range("need positive index");
             }
             Node* current = head;
+            if(index == 0) {
+                current = head;
+            }
             for (int i=0; i<index; i++) {
                 current = current->next;
             }
@@ -126,25 +129,22 @@ class CircLinkedList {
             Node* current;
             current = get_node(index);
             if (size == 1) {
-                //cout << "checkpoint size == 1" << endl;
                 head = nullptr;
                 delete current;
                 size -= 1;
                 return;
             }
             if (index == size-1) {
-                //cout << "checkpoint index == size-1" << endl;
-
                 before = get_node(index-1);
                 before->next = head;
                 tail = before;
+            } else if (index == 0) {
+                head = get_node(1);
             } else if (index%size == 0) {
-                //cout << "checkpoint index-mod-size == 0" << endl;
                 before = get_node(index-1);
                 before->next = get_node(index+1);
                 head = before->next;
             } else {
-                //cout << "checkpoint else" << endl;
                 before = get_node(index-1);
                 before->next = get_node(index+1);
             }
@@ -195,9 +195,11 @@ int last_man_standing(int n, int k) {
 
 
 int main() {
-    //CircLinkedList test({0,1,3,4});
-    //cout << test.pop(4) << endl;
-    cout << last_man_standing(68,1) << endl;
+    CircLinkedList test({0,1,3,4});
+    test.print();
+    cout << test.pop(0) << endl;
+    test.print();
+    //cout << last_man_standing(4,1) << endl;
 
     cout << "test end" << endl;
     return 0;
