@@ -121,6 +121,11 @@ class CircLinkedList {
             Node* current = head;
             cout << "[";
             int counter = 0;
+            if (size == 0) {
+                //Now we can print empty lists as well!
+                cout << "]" << endl;
+                return;
+            }
             while(counter != size-1) {
                 cout << current->value;
                 cout << ", ";
@@ -140,7 +145,8 @@ class CircLinkedList {
                 delete current;
                 size -= 1;
                 return;
-            } else if (index == size-1) {
+            }
+            if (index == size-1) {
                 before = get_node(index-1);
                 before->next = head;
                 tail = before;
@@ -199,21 +205,9 @@ int last_man_standing(int n, int k) {
 
 
 int main() {
-    CircLinkedList test({0,1,3,4});
-    test.print();
-    cout << test.pop(0) << endl;
-    test.print();
-    cout << test.pop(0) << endl;
-    test.print();
-    cout << test.pop(0) << endl;
-    test.print();
-    //cout << test.pop(0) << endl;
-    test.print();
-    
-    
-    cout << last_man_standing(4,1) << endl;
-    //Everything runs smoothly except for pop(0) when length = 1 and
-    //last_man_standing(n,1) won't work for any n, most likely due to the same issue.
+    //CircLinkedList test({0,1,3,4});
+    //test.print(); 
+    cout << last_man_standing(68,7) << endl;
     cout << "test end" << endl;
     return 0;
 }
