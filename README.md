@@ -6,7 +6,7 @@ Besvarelse på gruppeprosjekt 2 i IN1910.
 
 **Oppg. 3 - Store O "kalkulasjon".**  
 Vi gjør en enkel stor O- beregning av algoritmene våre for diverse funksjonaliteter.  
-ArrayList = AL    LinkedList = LL       k er en konstant        n er listelengden
+ArrayList = AL          LinkedList = LL              k er en konstant                n er listelengden
 
 
     - get_element.
